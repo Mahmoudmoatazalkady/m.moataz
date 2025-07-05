@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pac-Man</title>
+    <link rel="stylesheet" href="games.css">
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <script>
+    // Get the canvas element
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Set the canvas dimensions
+canvas.width = 400;
+canvas.height = 400;
+
+// Define the map layout (0 = empty, 1 = wall)
+const map = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+    [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1],
+    [1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+];
+
+// Define the Pac-Man object
+let pacMan = {
+    x: 1,
+    y: 1,
+    speed: 0.5,
+    direction: 'right',
+    size: 20
+};
+
+// Define the ghosts objects
+let ghosts = [
+    {x: 18, y: 1, speed: 0.5, direction: 'left', size: 20},
+    {x: 1, y: 5, speed: 0.5, direction: 'right', size: 20}
+];
+
+// Define the score variable
+let score = 0;
+
+// Draw the map, Pac-Man, and ghosts on the canvas
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let row = 0; row < map.length; row++) {
+        for (let col = 0; col < map[row].length; col++) {
+            if (map[row][col] === 1) {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(col * 20, row * 20, 20, 20);
+            }
+        }
+    }
+    ctx.fillStyle = 'yellow';
+    ctx.beginPath();
+    ctx.arc(pacMan.x * 20 + 10, pacMan.y * 20 + 10, pacMan.size / 2, 0, 2 * Math.PI);
+    ctx.fill();
+    for (let i = 0; i < ghosts.length; i++) {
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(ghosts[i].x * 20 + 10, ghosts[i].y * 20 + 10, ghosts[i].size / 2, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    ctx.fillStyle = 'black';
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText('Score: ' + score, 10, 10);
+}
+
+// Update the Pac-Man and ghosts positions based on the direction
+function update() {
+    moveCharacter(pacMan);
+    for (let i = 0; i < ghosts.length; i++) {
+        moveGhostTowardsPacMan(ghosts[i]);
+        if (ghosts[i].x === pacMan.x && ghosts[i].y === pacMan.y) {
+            alert('Game Over! You lost.');
+            document.location.reload();
+        }
+    }
+    if (pacMan.x === 18 && pacMan.y === 5) {
+        alert('Congratulations! You won.');
+        document.location.reload();
+    }
+}
+
+// Move a character (Pac-Man or ghost) based on its direction
+function moveCharacter(character) {
+    let newX = character.x;
+    let newY = character.y;
+    if (character.direction === 'right') {
+        newX += character.speed;
+    } else if (character.direction === 'left') {
+        newX -= character.speed;
+    } else if (character.direction === 'up') {
+        newY -= character.speed;
+    } else if (character.direction === 'down') {
+        newY += character.speed;
+    }
+    if (map[Math.floor(newY)][Math.floor(newX)] === 0) {
+        character.x = newX;
+        character.y = newY;
+    }
+}
+
+// Move a ghost towards Pac-Man
+function moveGhostTowardsPacMan(ghost) {
+    let diffX = pacMan.x - ghost.x;
+    let diffY = pacMan.y - ghost.y;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+            ghost.direction = 'right';
+        } else {
+            ghost.direction = 'left';
+        }
+    } else {
+        if (diffY > 0) {
+            ghost.direction = 'down';
+        } else {
+            ghost.direction = 'up';
+        }
+    }
+    moveCharacter(ghost);
+}
+
+// Handle keyboard input
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' && pacMan.direction !== 'left') {
+        pacMan.direction = 'right';
+    } else if (e.key === 'ArrowLeft' && pacMan.direction !== 'right') {
+        pacMan.direction = 'left';
+    } else if (e.key === 'ArrowUp' && pacMan.direction !== 'down') {
+        pacMan.direction = 'up';
+    } else if (e.key === 'ArrowDown' && pacMan.direction !== 'up') {
+        pacMan.direction = 'down';
+    }
+});
+
+// Main game loop
+setInterval(() => {
+    update();
+    draw();
+}, 200);
+    </script>
+    <div style="text-align: center; color: white;">Score: <span id="score">0</span></div>
+</body>
+</html>

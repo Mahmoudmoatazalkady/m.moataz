@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors-game</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333;
+        }
+
+        .game-container {
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+
+        .choices {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.1s, background-color 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .score {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0) }
+            25% { transform: translateX(-10px) }
+            50% { transform: translateX(10px) }
+            75% { transform: translateX(-10px) }
+            100% { transform: translateX(0) }
+        }
+
+        .choices-display {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            font-size: 3rem;
+        }
+
+        .win {
+            color: green;
+            transform: scale(1.2);
+            transition: all 0.3s;
+        }
+
+        .difficulty {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+        }
+
+        #history-log {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 9px;
+            margin: 1rem 0;
+            width: 100%;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .history-entry {
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            border-radius: 4px;
+            animation: slideIn 0.3s ease-out;
+            font-size: 0.9rem;
+        }
+
+        .win-entry { background: #dfffdf; }
+        .loss-entry { background: #ffe5e5; }
+        .draw-entry { background: #f0f0f0; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .celebrate { animation: celebrate 0.5s; }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
+        
+        <div class="difficulty">
+            <label>Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <div class="choices">
+            <button onclick="playGame('rock')">✊ Rock</button>
+            <button onclick="playGame('paper')">✋ Paper</button>
+            <button onclick="playGame('scissors')">✌️ Scissors</button>
+        </div>
+
+        <div class="choices-display">
+            <div id="player-choice">❔</div>
+            <div>vs</div>
+            <div id="computer-choice">❔</div>
+        </div>
+
+        <div class="result" id="result">Choose your weapon!</div>
+        <div class="score" id="score">Wins: 0 • Losses: 0 • Draws: 0</div>
+        
+        <button onclick="resetScores()" style="margin: 1rem 0;">Reset Scores</button>
+        
+        <div id="history-log"></div>
+    </div>
+
+    <audio id="win-sound" src="#"></audio>
+    <audio id="lose-sound" src="#"></audio>
+    <audio id="draw-sound" src="#"></audio>
+
+    <script>
+        let wins = 0;
+        let losses = 0;
+        let draws = 0;
+        let gameHistory = [];
+        let playerPattern = [];
+
+        const beats = {
+            rock: 'paper',
+            paper: 'scissors',
+            scissors: 'rock'
+        };
+
+        loadScores();
+        loadHistory();
+
+        function getComputerChoice() {
+            const difficulty = document.getElementById('difficulty').value;
+            if (difficulty === 'hard' && playerPattern.length > 2) {
+                const lastThree = playerPattern.slice(-3);
+                const counts = { rock: 0, paper: 0, scissors: 0 };
+                lastThree.forEach(move => counts[move]++);
+                const predicted = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+                return beats[predicted];
+            }
+            const choices = ['rock', 'paper', 'scissors'];
+            return choices[Math.floor(Math.random() * 3)];
+        }
+
+        function determineWinner(player, computer) {
+            if (player === computer) return 'draw';
+            if (
+                (player === 'rock' && computer === 'scissors') ||
+                (player === 'paper' && computer === 'rock') ||
+                (player === 'scissors' && computer === 'paper')
+            ) {
+                return 'win';
+            }
+            return 'lose';
+        }
+
+        function updateChoicesDisplay(player, computer) {
+            const emojis = {
+                rock: '✊',
+                paper: '✋',
+                scissors: '✌️'
+            };
+
+            const playerDisplay = document.getElementById('player-choice');
+            const computerDisplay = document.getElementById('computer-choice');
+
+            playerDisplay.classList.add('shake');
+            computerDisplay.classList.add('shake');
+
+            setTimeout(() => {
+                playerDisplay.classList.remove('shake');
+                computerDisplay.classList.remove('shake');
+                playerDisplay.textContent = emojis[player];
+                computerDisplay.textContent = emojis[computer];
+            }, 250);
+        }
+
+        function playSound(result) {
+            const sounds = {
+                win: document.getElementById('win-sound'),
+                lose: document.getElementById('lose-sound'),
+                draw: document.getElementById('draw-sound')
+            };
+            sounds[result].currentTime = 0;
+            sounds[result].play();
+        }
+
+        function saveScores() {
+            localStorage.setItem('rps-scores', JSON.stringify({ wins, losses, draws }));
+        }
+
+        function loadScores() {
+            const saved = JSON.parse(localStorage.getItem('rps-scores'));
+            if (saved) {
+                wins = saved.wins || 0;
+                losses = saved.losses || 0;
+                draws = saved.draws || 0;
+            }
+            updateScoreDisplay();
+        }
+
+        function saveHistory() {
+            localStorage.setItem('rps-history', JSON.stringify(gameHistory));
+        }
+
+        function loadHistory() {
+            const saved = JSON.parse(localStorage.getItem('rps-history'));
+            gameHistory = saved || [];
+            updateHistoryDisplay();
+        }
+
+        function resetScores() {
+            wins = losses = draws = 0;
+            gameHistory = [];
+            saveScores();
+            saveHistory();
+            updateScoreDisplay();
+            updateHistoryDisplay();
+        }
+
+        function updateScoreDisplay() {
+            document.getElementById('score').textContent = 
+                `Wins: ${wins} • Losses: ${losses} • Draws: ${draws}`;
+        }
+
+        function addHistoryEntry(player, computer, result) {
+            const entry = {
+                timestamp: new Date().toLocaleString(),
+                player,
+                computer,
+                result,
+                class: result + '-entry'
+            };
+            gameHistory.push(entry);
+            if (gameHistory.length > 10) gameHistory.shift();
+            saveHistory();
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            const log = document.getElementById('history-log');
+            log.innerHTML = gameHistory.reverse().map(entry => `
+                <div class="history-entry ${entry.class}">
+                    [${entry.timestamp}] 
+                    ${entry.player.toUpperCase()} vs ${entry.computer.toUpperCase()} - 
+                    ${entry.result.toUpperCase()}
+                </div>
+            `).join('');
+        }
+
+        function playGame(playerChoice) {
+            playerPattern.push(playerChoice);
+            const computerChoice = getComputerChoice();
+            const result = determineWinner(playerChoice, computerChoice);
+            
+            updateChoicesDisplay(playerChoice, computerChoice);
+            playSound(result);
+            
+            setTimeout(() => {
+                document.getElementById('result').classList.add('celebrate');
+                setTimeout(() => {
+                    document.getElementById('result').classList.remove('celebrate');
+                }, 500);
+
+                if (result === 'win') wins++;
+                if (result === 'lose') losses++;
+                if (result === 'draw') draws++;
+                
+                addHistoryEntry(playerChoice, computerChoice, result);
+                updateScoreDisplay();
+                saveScores();
+            }, 500);
+        }
+    </script>
+</body>
+</html>

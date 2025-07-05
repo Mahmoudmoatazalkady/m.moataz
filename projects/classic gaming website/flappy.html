@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flappy Bird Refined</title>
+    <style>
+        canvas { display: block; margin: 0 auto; background: skyblue; }
+        #score { color: white; text-align: center; }
+    </style>
+</head>
+<body>
+    <div id="score">Score: 0</div>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    <script>
+// Get the canvas element
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Set the canvas dimensions
+canvas.width = 400;
+canvas.height = 600;
+
+// Define the bird object
+let bird = {
+    x: 100,
+    y: 300,
+    speed: 0,
+    gravity: 0.5,
+    size: 30
+};
+
+// Define the pipes objects
+let pipes = [
+    {x: 500, y: 200, gap: 150, width: 80, passed: false},
+    {x: 700, y: 300, gap: 150, width: 80, passed: false},
+    {x: 900, y: 400, gap: 150, width: 80, passed: false}
+];
+
+// Define the score variable
+let score = 0;
+
+// Draw the bird, pipes, and score on the canvas
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'yellow';
+    ctx.beginPath();
+    ctx.arc(bird.x, bird.y, bird.size / 2, 0, 2 * Math.PI);
+    ctx.fill();
+    for (let i = 0; i < pipes.length; i++) {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(pipes[i].x, 0, pipes[i].width, pipes[i].y);
+        ctx.fillRect(pipes[i].x, pipes[i].y + pipes[i].gap, pipes[i].width, canvas.height - (pipes[i].y + pipes[i].gap));
+    }
+    ctx.fillStyle = 'black';
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText('Score: ' + score, 10, 10);
+}
+
+// Update the bird position based on the gravity and user input
+function update() {
+    bird.speed += bird.gravity;
+    bird.y += bird.speed;
+    if (bird.y + bird.size / 2 > canvas.height) {
+        alert('Game Over! Your score is ' + score);
+        score = 0;
+        bird = {
+            x: 100,
+            y: 300,
+            speed: 0,
+            gravity: 0.5,
+            size: 30
+        };
+        pipes = [
+            {x: 500, y: 200, gap: 150, width: 80, passed: false},
+            {x: 700, y: 300, gap: 150, width: 80, passed: false},
+            {x: 900, y: 400, gap: 150, width: 80, passed: false}
+        ];
+    }
+    for (let i = 0; i < pipes.length; i++) {
+        pipes[i].x -= 2;
+        if (pipes[i].x < -pipes[i].width) {
+            pipes[i].x = canvas.width;
+            pipes[i].y = Math.floor(Math.random() * (canvas.height - pipes[i].gap));
+            pipes[i].passed = false;
+        }
+        if (checkCollision(bird, pipes[i])) {
+            alert('Game Over! Your score is ' + score);
+            score = 0;
+            bird = {
+                x: 100,
+                y: 300,
+                speed: 0,
+                gravity: 0.5,
+                size: 30
+            };
+            pipes = [
+                {x: 500, y: 200, gap: 150, width: 80, passed: false},
+                {x: 700, y: 300, gap: 150, width: 80, passed: false},
+                {x: 900, y: 400, gap: 150, width: 80, passed: false}
+            ];
+        }
+        if (!pipes[i].passed && bird.x > pipes[i].x + pipes[i].width) {
+            score++;
+            pipes[i].passed = true;
+        }
+    }
+}
+
+// Check for collision between the bird and a pipe
+function checkCollision(bird, pipe) {
+    if (bird.x + bird.size / 2 > pipe.x && bird.x - bird.size / 2 < pipe.x + pipe.width) {
+        if (bird.y - bird.size / 2 < pipe.y || bird.y + bird.size / 2 > pipe.y + pipe.gap) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Handle keyboard input
+document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') {
+        bird.speed = -10;
+    }
+});
+
+// Main game loop
+setInterval(() => {
+    update();
+    draw();
+}, 16);
+
+    </script>
+</body>
+</html>

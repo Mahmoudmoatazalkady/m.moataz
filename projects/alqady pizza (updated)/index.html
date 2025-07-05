@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alqady Pizza - Pizzas & more</title>
+    <meta name="description" content="Experience the finest Italian pizzas at Alqady Pizza. Fresh ingredients, traditional recipes, and exceptional taste delivered to your door.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="ALQADY-removebg-preview.png" alt="Alqady Pizza Logo" class="logo-img">
+                    <span class="logo-text">Alqady Pizza</span>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#menu" class="nav-link">Menu</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="cart-icon-container">
+                        <a href="cart.html" class="cart-link">
+                            <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </a>
+                    </div>
+                    <a href="cart.html" class="order-btn-desktop">Order Now</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <nav class="mobile-nav">
+                    <a href="#home" class="mobile-nav-link">Home</a>
+                    <a href="#menu" class="mobile-nav-link">Menu</a>
+                    <a href="#about" class="mobile-nav-link">About</a>
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
+                    <a href="cart.html" class="order-btn-mobile">Order Now</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="rating-text">4.9/5 Customer Rating</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Authentic Italian
+                    <span class="hero-title-accent">Pizza Experience</span>
+                </h1>
+
+                <p class="hero-description">
+                    Handcrafted with love using traditional recipes, fresh ingredients, and the finest Italian techniques. 
+                    Every slice tells a story of passion and authenticity.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="cart.html" class="btn-primary">
+                        <span>Order Now</span>
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14"/>
+                            <path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#menu" class="btn-secondary">View Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Menu</h2>
+                <p class="section-description">
+                    Discover our carefully crafted selection of authentic Italian dishes, 
+                    made with the finest ingredients and traditional techniques.
+                </p>
+            </div>
+
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="pizza">
+                    <span class="category-icon">🍕</span>
+                    <span>Pizza</span>
+                </button>
+                <button class="category-btn" data-category="appetizers">
+                    <span class="category-icon">🥗</span>
+                    <span>Appetizers</span>
+                </button>
+                <button class="category-btn" data-category="beverages">
+                    <span class="category-icon">🥤</span>
+                    <span>Beverages</span>
+                </button>
+                <button class="category-btn" data-category="desserts">
+                    <span class="category-icon">🍰</span>
+                    <span>Desserts</span>
+                </button>
+            </div>
+
+            <div class="menu-items" id="menu-items">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Our Story</h2>
+                    <p class="about-paragraph">
+                        Since 1985, Alqady Pizza has been serving authentic Italian pizzas with a passion 
+                        that comes from three generations of pizza-making tradition. What started as a small 
+                        family business has grown into the city's most beloved pizzeria.
+                    </p>
+                    <p class="about-paragraph">
+                        We import our ingredients directly from Italy - from the San Marzano tomatoes 
+                        to the authentic Parmigiano-Reggiano cheese. Our dough is made fresh daily using 
+                        a 48-hour fermentation process that creates the perfect crispy yet chewy crust.
+                    </p>
+                    <button class="btn-primary">Learn More About Us</button>
+                </div>
+
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/4253302/pexels-photo-4253302.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Pizza chef preparing dough">
+                    <div class="about-badge">
+                        <div class="badge-number">35+</div>
+                        <div class="badge-text">Years of Excellence</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m9 12 2 2 4-4"/>
+                            <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/>
+                            <path d="M21 12A9 9 0 1 1 12 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Award Winning</h3>
+                    <p class="feature-description">Recognized as the best pizza restaurant in the city for three consecutive years.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Fast Delivery</h3>
+                    <p class="feature-description">Hot, fresh pizzas delivered to your door in 30 minutes or less, guaranteed.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="m22 21-3-3"/>
+                            <path d="m15 18 3 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Family Owned</h3>
+                    <p class="feature-description">Three generations of authentic Italian recipes passed down through our family.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Made with Love</h3>
+                    <p class="feature-description">Every pizza is handcrafted with passion and the finest imported ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Visit Us Today</h2>
+                <p class="section-description">
+                    Come experience the authentic taste of Italy right in your neighborhood. 
+                    We're here to serve you the best pizza in town!
+                </p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Address</h3>
+                            <p>123 Pizza Street</p>
+                            <p>Alex, Egypt</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Phone</h3>
+                            <p>123 456 789 10</p>
+                            <p>123 456 789 11</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Email</h3>
+                            <p>alqadypizza@gmail.com</p>
+                            <p>orders@alqadypizza.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12,6 12,12 16,14"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3 class="contact-title">Hours</h3>
+                            <p>Mon-Thu: 11AM-10PM</p>
+                            <p>Fri-Sat: 11AM-11PM</p>
+                            <p>Sun: 12PM-9PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1234567890123!2d-74.0059413!3d40.7127753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjAiTiA3NMKwMDAnMjEuNCJX!5e0!3m2!1sen!2sus!4v1234567890123"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Alqady Pizza Location">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h3 class="cta-title">Ready to Order?</h3>
+                    <p class="cta-description">Get your favorite pizza delivered hot and fresh to your door!</p>
+                    <div class="cta-buttons">
+                        <a href="cart.html" class="btn-primary">Order Online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg class="pizza-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+                            <path d="M8.5 8.5v.01"/>
+                            <path d="M16 15.5v.01"/>
+                            <path d="M12 12v.01"/>
+                        </svg>
+                        <span class="logo-text">Alqady Pizza</span>
+                    </div>
+                    <p class="footer-description">
+                        Authentic Italian pizzas made with love and the finest ingredients. 
+                        Three generations of tradition in every bite.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-list">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#menu" class="footer-link">Menu</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <ul class="footer-list">
+                        <li>Alex, Egypt</li>
+                        <li>123 456 789 10</li>
+                        <li>alqadypizza@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alqady Pizza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureMart E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2290%%22 style=%22font-size:90px;text-anchor:middle;%22>🚀</text></svg>">
+</head>
+<body class="bg-gray-950 font-inter text-gray-100 min-h-screen">
+    <div id="app-root" class="min-h-screen flex flex-col">
+        <div id="initial-loading" class="fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-50 text-teal-400">
+            <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-teal-500"></div>
+            <p class="mt-4 text-xl font-bold">Loading FutureMart...</p>
+        </div>
+    </div>
+    <div id="modal-container" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"></div>
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Games Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="games.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="glitch" data-text="Classic Games Hub" style="font-size: 40px;">Classic Games Hub</h1>
+        <nav class="nav-container">
+            <a href="home.html" style="font-size: 25px;">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="game-list">
+            <!-- In games.html -->
+            <div class="game-card">
+                <img src="pacman.png" alt="Pac-Man">
+                <div class="game-info">
+                    <h3 class="glitch" data-text="Pac-Man">Pac-Man</h3>
+                    <div class="score-display">High Score: <span class="high-score">0</span></div>
+                </div>
+                <button class="play-btn" onclick="location.href='pacman.html'">Play Pac-Man</button>
+            </div>
+            
+            <!-- Snake Card -->
+            <div class="game-card">
+                <img src="snake.png" alt="Snake">
+                <div class="game-info">
+                    <h3 class="glitch" data-text="Snake">Snake</h3>
+                    <div class="score-display">High Score: <span class="high-score">0</span></div>
+                </div>
+                <button class="play-btn" onclick="location.href='snake.html'">Play Snake</button>
+            </div>
+            
+            <!-- Flappy Bird Card -->
+            <div class="game-card">
+                <img src="flappybird.png" alt="Flappy Bird">
+                <div class="game-info">
+                    <h3 class="glitch" data-text="Flappy Bird">Flappy Bird</h3>
+                    <div class="score-display">High Score: <span class="high-score">0</span></div>
+                </div>
+                <button class="play-btn" onclick="location.href='flappy.html'">Play Flappy Bird</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Classic Games Hub</p>
+    </footer>
+</body>
+</html>

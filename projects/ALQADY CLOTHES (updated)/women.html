@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Collection - ALQADY Fashion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <h1>ALQADY</h1>
+                <span class="logo-subtitle" data-en="Fashion & Style" data-ar="أزياء وأناقة">Fashion & Style</span>
+            </a>
+
+            <nav class="nav-desktop">
+                <ul class="nav-links">
+                    <li><a href="women.html" class="active" data-en="Women" data-ar="نساء">Women</a></li>
+                    <li><a href="men.html" data-en="Men" data-ar="رجال">Men</a></li>
+                    <li><a href="kids.html" data-en="Kids" data-ar="أطفال">Kids</a></li>
+                    <li><a href="index.html#about" data-en="About Us" data-ar="عنا">About Us</a></li>
+                    <li><a href="index.html#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn" id="searchBtn" aria-label="Search">
+                    <img src="icons/search.svg" alt="Search" class="icon">
+                </button>
+                <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
+                    <img src="icons/heart.svg" alt="Wishlist" class="icon">
+                    <span class="count" id="wishlistCount">0</span>
+                </button>
+                <button class="icon-btn" id="cartBtn" aria-label="Shopping Cart">
+                    <img src="icons/cart.svg" alt="Cart" class="icon">
+                    <span class="count" id="cartCount">0</span>
+                </button>
+
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-mobile" id="mobileNav">
+        <div class="mobile-nav-content">
+            <div class="mobile-language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html" class="mobile-nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="women.html" class="mobile-nav-link" data-en="Women" data-ar="نساء">Women</a></li>
+                <li><a href="men.html" class="mobile-nav-link" data-en="Men" data-ar="رجال">Men</a></li>
+                <li><a href="kids.html" class="mobile-nav-link" data-en="Kids" data-ar="أطفال">Kids</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link" data-en="About Us" data-ar="عنا">About Us</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero-content">
+                    <h1 class="page-title" data-en="Women's Collection" data-ar="مجموعة النساء">Women's Collection</h1>
+                    <p class="page-subtitle" data-en="Discover elegant fashion designed for the modern woman. From sophisticated dresses to chic accessories." data-ar="اكتشفي الموضة الأنيقة المصممة للمرأة العصرية. من الفساتين الراقية إلى الإكسسوارات الشيك.">Discover elegant fashion designed for the modern woman. From sophisticated dresses to chic accessories.</p>
+                </div>
+                <div class="page-hero-image">
+                    <img src="https://images.pexels.com/photos/1300550/pexels-photo-1300550.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Women's Fashion Collection" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products-section">
+            <div class="container">
+                <div class="filters-container">
+                    <div class="product-filters">
+                        <button class="filter-btn active" data-filter="all" data-en="All Products" data-ar="جميع المنتجات">All Products</button>
+                        <button class="filter-btn" data-filter="dresses" data-en="Dresses" data-ar="فساتين">Dresses</button>
+                        <button class="filter-btn" data-filter="tops" data-en="Tops" data-ar="بلايز">Tops</button>
+                        <button class="filter-btn" data-filter="bottoms" data-en="Bottoms" data-ar="بناطيل">Bottoms</button>
+                        <button class="filter-btn" data-filter="accessories" data-en="Accessories" data-ar="إكسسوارات">Accessories</button>
+                    </div>
+
+                    <div class="sort-filters">
+                        <select id="sort-by">
+                            <option value="featured" data-en="Featured" data-ar="مميز">Featured</option>
+                            <option value="newest" data-en="Newest Arrivals" data-ar="أحدث الوافدين">Newest Arrivals</option>
+                            <option value="price-asc" data-en="Price: Low to High" data-ar="السعر: من الأقل للأعلى">Price: Low to High</option>
+                            <option value="price-desc" data-en="Price: High to Low" data-ar="السعر: من الأعلى للأقل">Price: High to Low</option>
+                            <option value="rating" data-en="Average Rating" data-ar="متوسط التقييم">Average Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+
+                <div class="load-more-container">
+                    <button class="btn btn-secondary" id="loadMoreBtn" data-en="Load More Products" data-ar="تحميل المزيد">Load More Products</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ALQADY</h3>
+                    <p data-en="Your destination for premium fashion and timeless style. We believe in quality, elegance, and empowering your unique expression." data-ar="وجهتك للأزياء الفاخرة والأسلوب الخالد. نؤمن بالجودة والأناقة وتمكين تعبيرك الفريد.">Your destination for premium fashion and timeless style. We believe in quality, elegance, and empowering your unique expression.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><img src="icons/facebook.svg" alt="Facebook" class="social-icon"></a>
+                        <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram" class="social-icon"></a>
+                        <a href="#" aria-label="Twitter"><img src="icons/twitter.svg" alt="Twitter" class="social-icon"></a>
+                        <a href="#" aria-label="YouTube"><img src="icons/youtube.svg" alt="YouTube" class="social-icon"></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about" data-en="About Us" data-ar="عنا">About Us</a></li>
+                        <li><a href="women.html" data-en="Women" data-ar="نساء">Women</a></li>
+                        <li><a href="men.html" data-en="Men" data-ar="رجال">Men</a></li>
+                        <li><a href="kids.html" data-en="Kids" data-ar="أطفال">Kids</a></li>
+                        <li><a href="#" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a></li>
+                        <li><a href="#" data-en="Shipping & Returns" data-ar="الشحن والإرجاع">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Customer Service" data-ar="خدمة العملاء">Customer Service</h4>
+                    <ul>
+                        <li><a href="index.html#contact" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a></li>
+                        <li><a href="#" data-en="Order Tracking" data-ar="تتبع الطلب">Order Tracking</a></li>
+                        <li><a href="#" data-en="Size Guide" data-ar="دليل المقاسات">Size Guide</a></li>
+                        <li><a href="#" data-en="Gift Cards" data-ar="بطاقات الهدايا">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-ar="النشرة الإخبارية">Newsletter</h4>
+                    <p data-en="Stay updated with our latest collections and exclusive offers." data-ar="ابق على اطلاع بأحدث مجموعاتنا والعروض الحصرية.">Stay updated with our latest collections and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-group">
+                            <input type="email" data-en-placeholder="Enter your email" data-ar-placeholder="أدخل بريدك الإلكتروني" placeholder="Enter your email" class="form-input" required>
+                            <button type="submit" class="btn btn-primary" data-en="Subscribe" data-ar="اشتراك">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2025 ALQADY. All rights reserved." data-ar="&copy; 2025 القاضي. جميع الحقوق محفوظة.">&copy; 2025 ALQADY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include all the same modals as index.html -->
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content search-modal-content">
+            <div class="modal-header">
+                <h3 data-en="Search Products" data-ar="البحث في المنتجات">Search Products</h3>
+                <button class="close-btn" aria-label="Close search">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" class="form-input search-input" data-en-placeholder="Search for products..." data-ar-placeholder="ابحث عن منتجات..." placeholder="Search for products...">
+                    <button class="btn btn-primary" id="clearSearchBtn" data-en="Clear" data-ar="مسح">Clear</button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <div class="products-grid" id="searchProductsGrid"></div>
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <p data-en="No products found. Try different keywords." data-ar="لم يتم العثور على منتجات. جرب كلمات مختلفة.">No products found. Try different keywords.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal-content">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Product Name</h3>
+                <button class="close-btn" aria-label="Close product details">&times;</button>
+            </div>
+            <div class="modal-body product-modal-body">
+                <div class="product-images-section">
+                    <div class="main-image-container">
+                        <img id="productModalMainImage" src="" alt="Product Image" class="product-modal-image">
+                        <div class="image-zoom-overlay" id="imageZoomOverlay">
+                            <img id="zoomedImage" src="" alt="Zoomed Product Image">
+                        </div>
+                    </div>
+                    <div class="thumbnail-gallery" id="productModalThumbnails"></div>
+                </div>
+                <div class="product-details-section">
+                    <div class="product-info">
+                        <p class="product-modal-price" id="productModalPrice">$0.00</p>
+                        <div class="product-rating">
+                            <div class="stars" id="productModalStars"></div>
+                            <span class="rating-text" id="productModalRatingText">(0 Reviews)</span>
+                        </div>
+                        <p class="product-modal-description" id="productModalDescription">Product description</p>
+                        
+                        <div class="product-options">
+                            <div class="option-group" id="sizeOptionGroup">
+                                <label class="option-label" data-en="Size:" data-ar="المقاس:">Size:</label>
+                                <div class="size-options" id="productModalSizes"></div>
+                            </div>
+                            
+                            <div class="option-group" id="colorOptionGroup">
+                                <label class="option-label" data-en="Color:" data-ar="اللون:">Color:</label>
+                                <div class="color-options" id="productModalColors"></div>
+                            </div>
+                            
+                            <div class="option-group" id="materialOptionGroup">
+                                <label class="option-label" data-en="Material:" data-ar="الخامة:">Material:</label>
+                                <div class="material-options" id="productModalMaterials"></div>
+                            </div>
+                        </div>
+
+                        <div class="stock-info">
+                            <span class="stock-status" id="productModalStockStatus">In Stock</span>
+                        </div>
+
+                        <div class="product-actions">
+                            <button class="btn btn-primary" id="addToCartModalBtn" data-en="Add to Cart" data-ar="أضف إلى السلة">Add to Cart</button>
+                            <button class="btn btn-secondary" id="addToWishlistModalBtn" data-en="Add to Wishlist" data-ar="أضف إلى المفضلة">Add to Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <div class="modal-header">
+                <h3 data-en="Shopping Cart" data-ar="سلة التسوق">Shopping Cart</h3>
+                <button class="close-btn" aria-label="Close cart">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span data-en="Subtotal:" data-ar="المجموع الفرعي:">Subtotal:</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span data-en="Shipping:" data-ar="الشحن:">Shipping:</span>
+                        <span id="cartShipping">$0.00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span data-en="Tax:" data-ar="الضريبة:">Tax:</span>
+                        <span id="cartTax">$0.00</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span data-en="Total:" data-ar="المجموع:">Total:</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                    <button class="btn btn-primary checkout-btn" id="checkoutBtn" data-en="Proceed to Checkout" data-ar="المتابعة للدفع">Proceed to Checkout</button>
+                </div>
+                <div class="empty-cart" id="emptyCart" style="display: none;">
+                    <p data-en="Your cart is empty" data-ar="سلة التسوق فارغة">Your cart is empty</p>
+                    <button class="btn btn-secondary" onclick="closeModal('cartModal')" data-en="Continue Shopping" data-ar="متابعة التسوق">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content wishlist-modal-content">
+            <div class="modal-header">
+                <h3 data-en="My Wishlist" data-ar="قائمة المفضلة">My Wishlist</h3>
+                <button class="close-btn" aria-label="Close wishlist">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="wishlist-items" id="wishlistItems"></div>
+                <div class="empty-wishlist" id="emptyWishlist" style="display: none;">
+                    <p data-en="Your wishlist is empty" data-ar="قائمة المفضلة فارغة">Your wishlist is empty</p>
+                    <button class="btn btn-secondary" onclick="closeModal('wishlistModal')" data-en="Continue Shopping" data-ar="متابعة التسوق">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Set current page for filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            window.currentPage = 'women';
+        });
+    </script>
+</body>
+</html>

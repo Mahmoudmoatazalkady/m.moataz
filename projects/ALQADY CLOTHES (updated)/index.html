@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALQADY - Premium Fashion Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <h1>ALQADY</h1>
+                <span class="logo-subtitle" data-en="Fashion & Style" data-ar="أزياء وأناقة">Fashion & Style</span>
+            </a>
+
+            <nav class="nav-desktop">
+                <ul class="nav-links">
+                    <li><a href="women.html" data-en="Women" data-ar="نساء">Women</a></li>
+                    <li><a href="men.html" data-en="Men" data-ar="رجال">Men</a></li>
+                    <li><a href="kids.html" data-en="Kids" data-ar="أطفال">Kids</a></li>
+                    <li><a href="#about" data-en="About Us" data-ar="عنا">About Us</a></li>
+                    <li><a href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn" id="searchBtn" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="count" id="wishlistCount">0</span>
+                </button>
+                <button class="icon-btn" id="cartBtn" aria-label="Shopping Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z"></path>
+                        <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z"></path>
+                        <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"></path>
+                    </svg>
+                    <span class="count" id="cartCount">0</span>
+                </button>
+
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+                
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-mobile" id="mobileNav">
+        <div class="mobile-nav-content">
+            <div class="mobile-language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html" class="mobile-nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="women.html" class="mobile-nav-link" data-en="Women" data-ar="نساء">Women</a></li>
+                <li><a href="men.html" class="mobile-nav-link" data-en="Men" data-ar="رجال">Men</a></li>
+                <li><a href="kids.html" class="mobile-nav-link" data-en="Kids" data-ar="أطفال">Kids</a></li>
+                <li><a href="#about" class="mobile-nav-link" data-en="About Us" data-ar="عنا">About Us</a></li>
+                <li><a href="#contact" class="mobile-nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero hero-slider-section">
+            <div class="hero-slider-container">
+                <button class="hero-arrow hero-arrow-left" aria-label="Previous banner">&#8592;</button>
+                <div class="hero-slider" id="heroSlider">
+                    <!-- Slides will be injected by JS -->
+                </div>
+                <button class="hero-arrow hero-arrow-right" aria-label="Next banner">&#8594;</button>
+            </div>
+        </section>
+
+        <!-- Best Selling Products Section -->
+        <section id="best-selling" class="best-selling-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Best Selling Products" data-ar="الأكثر مبيعًا">Best Selling Products</h2>
+                </div>
+                <div class="products-grid best-selling-grid" id="bestSellingGrid">
+                    <!-- Best selling products will be rendered here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="categories-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Shop by Category" data-ar="تسوق حسب الفئة">Shop by Category</h2>
+                    <p class="section-subtitle" data-en="Discover our collections designed for every style and occasion." data-ar="اكتشف مجموعاتنا المصممة لكل أسلوب ومناسبة.">Discover our collections designed for every style and occasion.</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Women's Collection">
+                            <div class="category-overlay">
+                                <a href="women.html" class="btn btn-primary category-btn" data-en="Shop Women" data-ar="تسوق النساء">Shop Women</a>
+                            </div>
+                        </div>
+                        <div class="category-content">
+                            <h3 data-en="Women's Collection" data-ar="مجموعة النساء">Women's Collection</h3>
+                            <p data-en="Elegant dresses, chic tops, and stylish accessories for the modern woman." data-ar="فساتين أنيقة وبلايز شيك وإكسسوارات عصرية للمرأة العصرية.">Elegant dresses, chic tops, and stylish accessories for the modern woman.</p>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Men's Collection">
+                            <div class="category-overlay">
+                                <a href="men.html" class="btn btn-primary category-btn" data-en="Shop Men" data-ar="تسوق الرجال">Shop Men</a>
+                            </div>
+                        </div>
+                        <div class="category-content">
+                            <h3 data-en="Men's Collection" data-ar="مجموعة الرجال">Men's Collection</h3>
+                            <p data-en="Sharp suits, casual wear, and premium accessories for the distinguished gentleman." data-ar="بدلات أنيقة وملابس كاجوال وإكسسوارات فاخرة للرجل المميز.">Sharp suits, casual wear, and premium accessories for the distinguished gentleman.</p>
+                        </div>
+                    </div>
+
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="https://images.pexels.com/photos/1620760/pexels-photo-1620760.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kids' Collection">
+                            <div class="category-overlay">
+                                <a href="kids.html" class="btn btn-primary category-btn" data-en="Shop Kids" data-ar="تسوق الأطفال">Shop Kids</a>
+                            </div>
+                        </div>
+                        <div class="category-content">
+                            <h3 data-en="Kids' Collection" data-ar="مجموعة الأطفال">Kids' Collection</h3>
+                            <p data-en="Comfortable and stylish clothing for children of all ages. Fun, colorful, and durable designs." data-ar="ملابس مريحة وأنيقة للأطفال من جميع الأعمار. تصاميم ممتعة وملونة ومتينة.">Comfortable and stylish clothing for children of all ages. Fun, colorful, and durable designs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="About ALQADY" data-ar="عنا">About ALQADY</h2>
+                    <p class="section-subtitle" data-en="Our story, our passion, our commitment to style." data-ar="قصتنا، شغفنا، التزامنا بالأناقة.">Our story, our passion, our commitment to style.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team working in a fashion studio" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h3 data-en="Crafting Elegance Since 2020" data-ar="صناعة الأناقة منذ 2020">Crafting Elegance Since 2020</h3>
+                        <p data-en="At ALQADY, we believe that fashion is more than just clothing—it's a form of self-expression. Founded in 2020, our mission has been to provide high-quality, stylish, and comfortable apparel that empowers individuals to look and feel their best." data-ar="في القاضي، نؤمن بأن الموضة أكثر من مجرد ملابس—إنها شكل من أشكال التعبير عن الذات. تأسست عام 2020، وكانت مهمتنا توفير ملابس عالية الجودة وأنيقة ومريحة تمكّن الأفراد من الظهور والشعور بأفضل حالاتهم.">At ALQADY, we believe that fashion is more than just clothing—it's a form of self-expression. Founded in 2020, our mission has been to provide high-quality, stylish, and comfortable apparel that empowers individuals to look and feel their best.</p>
+                        <p data-en="We meticulously select fabrics, design with precision, and ensure every piece reflects our commitment to craftsmanship and timeless elegance. Our collections are inspired by global trends and classic aesthetics, ensuring you find something unique for every occasion." data-ar="نحن نختار الأقمشة بدقة، ونصمم بدقة، ونتأكد من أن كل قطعة تعكس التزامنا بالحرفية والأناقة الخالدة. مجموعاتنا مستوحاة من الاتجاهات العالمية والجماليات الكلاسيكية، مما يضمن لك العثور على شيء فريد لكل مناسبة.">We meticulously select fabrics, design with precision, and ensure every piece reflects our commitment to craftsmanship and timeless elegance. Our collections are inspired by global trends and classic aesthetics, ensuring you find something unique for every occasion.</p>
+                        <a href="#contact" class="btn btn-secondary" data-en="Learn More" data-ar="تعلم المزيد">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-en="Get in Touch" data-ar="اتصل بنا">Get in Touch</h2>
+                    <p class="section-subtitle" data-en="We'd love to hear from you!" data-ar="نحن نحب أن نسمع منك!">We'd love to hear from you!</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h4 data-en="Contact Details" data-ar="تفاصيل الاتصال">Contact Details</h4>
+                        <div class="info-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>alex,egypt</span>
+                        </div>
+                        <div class="info-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>+201 080 691 217</span>
+                        </div>
+                        <div class="info-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>mahmoudmoatazalqady@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="info-icon">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                            <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h4 data-en="Talk to Us" data-ar="تحدث معنا">Talk to Us</h4>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" data-en="Your Name" data-ar="اسمك">Name</label>
+                                <input type="text" id="name" class="form-input" data-en-placeholder="Your Name" data-ar-placeholder="اسمك" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-en="Your Email" data-ar="بريدك الإلكتروني">Email</label>
+                                <input type="email" id="email" class="form-input" data-en-placeholder="Your Email" data-ar-placeholder="بريدك الإلكتروني" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" data-en="Subject" data-ar="الموضوع">Subject</label>
+                                <input type="text" id="subject" class="form-input" data-en-placeholder="Subject of your message" data-ar-placeholder="موضوع رسالتك" placeholder="Subject of your message">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-en="Your Message" data-ar="رسالتك">Message</label>
+                                <textarea id="message" class="form-input" rows="5" data-en-placeholder="Your message" data-ar-placeholder="رسالتك هنا..." placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-en="Send Message" data-ar="أرسل الرسالة">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ALQADY</h3>
+                    <p data-en="Your destination for premium fashion and timeless style. We believe in quality, elegance, and empowering your unique expression." data-ar="وجهتك للأزياء الفاخرة والأسلوب الخالد. نؤمن بالجودة والأناقة وتمكين تعبيرك الفريد.">Your destination for premium fashion and timeless style. We believe in quality, elegance, and empowering your unique expression.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.654 0-1.404.449-2.706 1.197-3.654.749-.948 1.9-1.559 3.197-1.559s2.448.611 3.197 1.559c.748.948 1.197 2.25 1.197 3.654 0 1.404-.449 2.706-1.197 3.654-.749.948-1.9 1.559-3.197 1.559zm7.718 0c-1.297 0-2.448-.611-3.197-1.559-.748-.948-1.197-2.25-1.197-3.654 0-1.404.449-2.706 1.197-3.654.749-.948 1.9-1.559 3.197-1.559s2.448.611 3.197 1.559c.748.948 1.197 2.25 1.197 3.654 0 1.404-.449 2.706-1.197 3.654-.749.948-1.9 1.559-3.197 1.559z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                    <ul>
+                        <li><a href="#about" data-en="About Us" data-ar="عنا">About Us</a></li>
+                        <li><a href="women.html" data-en="Women" data-ar="نساء">Women</a></li>
+                        <li><a href="men.html" data-en="Men" data-ar="رجال">Men</a></li>
+                        <li><a href="kids.html" data-en="Kids" data-ar="أطفال">Kids</a></li>
+                        <li><a href="#" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a></li>
+                        <li><a href="#" data-en="Shipping & Returns" data-ar="الشحن والإرجاع">Shipping & Returns</a></li>
+                        <li><a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Customer Service" data-ar="خدمة العملاء">Customer Service</h4>
+                    <ul>
+                        <li><a href="#contact" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a></li>
+                        <li><a href="#" data-en="Order Tracking" data-ar="تتبع الطلب">Order Tracking</a></li>
+                        <li><a href="#" data-en="Size Guide" data-ar="دليل المقاسات">Size Guide</a></li>
+                        <li><a href="#" data-en="Gift Cards" data-ar="بطاقات الهدايا">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-ar="النشرة الإخبارية">Newsletter</h4>
+                    <p data-en="Stay updated with our latest collections and exclusive offers." data-ar="ابق على اطلاع بأحدث مجموعاتنا والعروض الحصرية.">Stay updated with our latest collections and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-group">
+                            <input type="email" data-en-placeholder="Enter your email" data-ar-placeholder="أدخل بريدك الإلكتروني" placeholder="Enter your email" class="form-input" required>
+                            <button type="submit" class="btn btn-primary" data-en="Subscribe" data-ar="اشتراك">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2025 ALQADY. All rights reserved." data-ar="&copy; 2025 القاضي. جميع الحقوق محفوظة.">&copy; 2025 ALQADY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content search-modal-content">
+            <div class="modal-header">
+                <h3 data-en="Search Products" data-ar="البحث في المنتجات">Search Products</h3>
+                <button class="close-btn" aria-label="Close search">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" class="form-input search-input" data-en-placeholder="Search for products..." data-ar-placeholder="ابحث عن منتجات..." placeholder="Search for products...">
+                    <button class="btn btn-primary" id="clearSearchBtn" data-en="Clear" data-ar="مسح">Clear</button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <div class="products-grid" id="searchProductsGrid"></div>
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <p data-en="No products found. Try different keywords." data-ar="لم يتم العثور على منتجات. جرب كلمات مختلفة.">No products found. Try different keywords.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal-content">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Product Name</h3>
+                <button class="close-btn" aria-label="Close product details">&times;</button>
+            </div>
+            <div class="modal-body product-modal-body">
+                <div class="product-images-section">
+                    <div class="main-image-container">
+                        <img id="productModalMainImage" src="" alt="Product Image" class="product-modal-image">
+                        <div class="image-zoom-overlay" id="imageZoomOverlay">
+                            <img id="zoomedImage" src="" alt="Zoomed Product Image">
+                        </div>
+                    </div>
+                    <div class="thumbnail-gallery" id="productModalThumbnails"></div>
+                </div>
+                <div class="product-details-section">
+                    <div class="product-info">
+                        <p class="product-modal-price" id="productModalPrice">$0.00</p>
+                        <div class="product-rating">
+                            <div class="stars" id="productModalStars"></div>
+                            <span class="rating-text" id="productModalRatingText">(0 Reviews)</span>
+                        </div>
+                        <p class="product-modal-description" id="productModalDescription">Product description</p>
+                        
+                        <div class="product-options">
+                            <div class="option-group" id="sizeOptionGroup">
+                                <label class="option-label" data-en="Size:" data-ar="المقاس:">Size:</label>
+                                <div class="size-options" id="productModalSizes"></div>
+                            </div>
+                            
+                            <div class="option-group" id="colorOptionGroup">
+                                <label class="option-label" data-en="Color:" data-ar="اللون:">Color:</label>
+                                <div class="color-options" id="productModalColors"></div>
+                            </div>
+                            
+                            <div class="option-group" id="materialOptionGroup">
+                                <label class="option-label" data-en="Material:" data-ar="الخامة:">Material:</label>
+                                <div class="material-options" id="productModalMaterials"></div>
+                            </div>
+                        </div>
+
+                        <div class="stock-info">
+                            <span class="stock-status" id="productModalStockStatus">In Stock</span>
+                        </div>
+
+                        <div class="product-actions">
+                            <button class="btn btn-primary" id="addToCartModalBtn" data-en="Add to Cart" data-ar="أضف إلى السلة">Add to Cart</button>
+                            <button class="btn btn-secondary" id="addToWishlistModalBtn" data-en="Add to Wishlist" data-ar="أضف إلى المفضلة">Add to Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <div class="modal-header">
+                <h3 data-en="Shopping Cart" data-ar="سلة التسوق">Shopping Cart</h3>
+                <button class="close-btn" aria-label="Close cart">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span data-en="Subtotal:" data-ar="المجموع الفرعي:">Subtotal:</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span data-en="Shipping:" data-ar="الشحن:">Shipping:</span>
+                        <span id="cartShipping">$0.00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span data-en="Tax:" data-ar="الضريبة:">Tax:</span>
+                        <span id="cartTax">$0.00</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span data-en="Total:" data-ar="المجموع:">Total:</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                    <button class="btn btn-primary checkout-btn" id="checkoutBtn" data-en="Proceed to Checkout" data-ar="المتابعة للدفع">Proceed to Checkout</button>
+                </div>
+                <div class="empty-cart" id="emptyCart" style="display: none;">
+                    <p data-en="Your cart is empty" data-ar="سلة التسوق فارغة">Your cart is empty</p>
+                    <button class="btn btn-secondary" onclick="closeModal('cartModal')" data-en="Continue Shopping" data-ar="متابعة التسوق">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal-content">
+            <div class="modal-header">
+                <h3 data-en="Checkout" data-ar="الدفع">Checkout</h3>
+                <button class="close-btn" aria-label="Close checkout">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-content">
+                    <div class="checkout-form">
+                        <h4 data-en="Shipping Information" data-ar="معلومات الشحن">Shipping Information</h4>
+                        <form id="checkoutForm">
+                            <div class="form-group promo-group">
+                                <label for="promoCode" data-en="Promo Code" data-ar="كود الخصم">Promo Code</label>
+                                <div class="promo-input-row">
+                                    <input type="text" id="promoCode" name="promoCode" class="form-input" placeholder="Enter code">
+                                    <button type="button" id="applyPromoBtn" class="btn btn-secondary" data-en="Apply" data-ar="تطبيق">Apply</button>
+                                </div>
+                                <div id="promoFeedback" class="promo-feedback"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" data-en="First Name" data-ar="الاسم الأول">First Name <span class="required-star">*</span></label>
+                                    <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" data-en="Last Name" data-ar="اسم العائلة">Last Name <span class="required-star">*</span></label>
+                                    <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutEmail" data-en="Email" data-ar="البريد الإلكتروني">Email <span class="required-star">*</span></label>
+                                <input type="email" id="checkoutEmail" name="checkoutEmail" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-en="Phone" data-ar="الهاتف">Phone <span class="required-star">*</span></label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" data-en="Address" data-ar="العنوان">Address <span class="required-star">*</span></label>
+                                <input type="text" id="address" name="address" class="form-input" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city" data-en="City" data-ar="المدينة">City <span class="required-star">*</span></label>
+                                    <input type="text" id="city" name="city" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode" data-en="ZIP Code" data-ar="الرمز البريدي">ZIP Code <span class="required-star">*</span></label>
+                                    <input type="text" id="zipCode" name="zipCode" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="governorate" data-en="Governorate" data-ar="المحافظة">Governorate <span class="required-star">*</span></label>
+                                <select id="governorate" name="governorate" class="form-input" required>
+                                    <option value="" disabled selected data-en="Select Governorate" data-ar="اختر المحافظة">Select Governorate</option>
+                                    <option value="Cairo" data-en="Cairo" data-ar="القاهرة">Cairo</option>
+                                    <option value="Giza" data-en="Giza" data-ar="الجيزة">Giza</option>
+                                    <option value="Alexandria" data-en="Alexandria" data-ar="الإسكندرية">Alexandria</option>
+                                    <option value="Dakahlia" data-en="Dakahlia" data-ar="الدقهلية">Dakahlia</option>
+                                    <option value="Red Sea" data-en="Red Sea" data-ar="البحر الأحمر">Red Sea</option>
+                                    <option value="Beheira" data-en="Beheira" data-ar="البحيرة">Beheira</option>
+                                    <option value="Fayoum" data-en="Fayoum" data-ar="الفيوم">Fayoum</option>
+                                    <option value="Gharbia" data-en="Gharbia" data-ar="الغربية">Gharbia</option>
+                                    <option value="Ismailia" data-en="Ismailia" data-ar="الإسماعيلية">Ismailia</option>
+                                    <option value="Menofia" data-en="Menofia" data-ar="المنوفية">Menofia</option>
+                                    <option value="Minya" data-en="Minya" data-ar="المنيا">Minya</option>
+                                    <option value="Qaliubiya" data-en="Qaliubiya" data-ar="القليوبية">Qaliubiya</option>
+                                    <option value="New Valley" data-en="New Valley" data-ar="الوادي الجديد">New Valley</option>
+                                    <option value="Suez" data-en="Suez" data-ar="السويس">Suez</option>
+                                    <option value="Aswan" data-en="Aswan" data-ar="أسوان">Aswan</option>
+                                    <option value="Assiut" data-en="Assiut" data-ar="أسيوط">Assiut</option>
+                                    <option value="Beni Suef" data-en="Beni Suef" data-ar="بني سويف">Beni Suef</option>
+                                    <option value="Port Said" data-en="Port Said" data-ar="بورسعيد">Port Said</option>
+                                    <option value="Damietta" data-en="Damietta" data-ar="دمياط">Damietta</option>
+                                    <option value="Sharkia" data-en="Sharkia" data-ar="الشرقية">Sharkia</option>
+                                    <option value="South Sinai" data-en="South Sinai" data-ar="جنوب سيناء">South Sinai</option>
+                                    <option value="Kafr El Sheikh" data-en="Kafr El Sheikh" data-ar="كفر الشيخ">Kafr El Sheikh</option>
+                                    <option value="Matrouh" data-en="Matrouh" data-ar="مطروح">Matrouh</option>
+                                    <option value="Luxor" data-en="Luxor" data-ar="الأقصر">Luxor</option>
+                                    <option value="Qena" data-en="Qena" data-ar="قنا">Qena</option>
+                                    <option value="North Sinai" data-en="North Sinai" data-ar="شمال سيناء">North Sinai</option>
+                                    <option value="Sohag" data-en="Sohag" data-ar="سوهاج">Sohag</option>
+                                </select>
+                            </div>
+                            
+                            <h4 data-en="Payment Method" data-ar="طريقة الدفع">Payment Method</h4>
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="instapay" checked>
+                                    <span class="payment-label">
+                                        <div class="payment-icon instapay-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="1" y="3" width="22" height="18" rx="2" ry="2"></rect>
+                                                <line x1="1" y1="9" x2="23" y2="9"></line>
+                                            </svg>
+                                        </div>
+                                        <span data-en="InstaPay" data-ar="إنستاباي">InstaPay</span>
+                                    </span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="cash">
+                                    <span class="payment-label">
+                                        <div class="payment-icon cash-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                            </svg>
+                                        </div>
+                                        <span data-en="Cash on Delivery" data-ar="الدفع عند الاستلام">Cash on Delivery</span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="instapay-details" id="instapayDetails">
+                                <div class="instapay-info">
+                                    <h5 data-en="InstaPay Payment" data-ar="دفع إنستاباي">InstaPay Payment</h5>
+                                    <p data-en="You will be redirected to InstaPay to complete your payment securely." data-ar="سيتم توجيهك إلى إنستاباي لإكمال الدفع بأمان.">You will be redirected to InstaPay to complete your payment securely.</p>
+                                    <div class="instapay-features">
+                                        <div class="feature">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="20,6 9,17 4,12"></polyline>
+                                            </svg>
+                                            <span data-en="Secure Payment" data-ar="دفع آمن">Secure Payment</span>
+                                        </div>
+                                        <div class="feature">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="20,6 9,17 4,12"></polyline>
+                                            </svg>
+                                            <span data-en="Instant Processing" data-ar="معالجة فورية">Instant Processing</span>
+                                        </div>
+                                        <div class="feature">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="20,6 9,17 4,12"></polyline>
+                                            </svg>
+                                            <span data-en="No Extra Fees" data-ar="بدون رسوم إضافية">No Extra Fees</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="checkout-summary">
+                        <h4 data-en="Order Summary" data-ar="ملخص الطلب">Order Summary</h4>
+                        <div class="checkout-items" id="checkoutItems"></div>
+                        <div class="checkout-totals">
+                            <div class="summary-line">
+                                <span data-en="Subtotal:" data-ar="المجموع الفرعي:">Subtotal:</span>
+                                <span id="checkoutSubtotal">$0.00</span>
+                            </div>
+                            <div class="summary-line">
+                                <span data-en="Shipping:" data-ar="الشحن:">Shipping:</span>
+                                <span id="checkoutShipping">$0.00</span>
+                            </div>
+                            <div class="summary-line">
+                                <span data-en="Tax:" data-ar="الضريبة:">Tax:</span>
+                                <span id="checkoutTax">$0.00</span>
+                            </div>
+                            <div class="summary-line discount" id="discountLine" style="display:none">
+                                <span data-en="Discount:" data-ar="الخصم:">Discount:</span>
+                                <span id="checkoutDiscount">- $0.00</span>
+                            </div>
+                            <div class="summary-line total">
+                                <span data-en="Total:" data-ar="المجموع:">Total:</span>
+                                <span id="checkoutTotal">$0.00</span>
+                            </div>
+                        </div>
+                        <button type="submit" form="checkoutForm" class="btn btn-primary btn-full" data-en="Place Order" data-ar="تأكيد الطلب">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content wishlist-modal-content">
+            <div class="modal-header">
+                <h3 data-en="My Wishlist" data-ar="قائمة المفضلة">My Wishlist</h3>
+                <button class="close-btn" aria-label="Close wishlist">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="wishlist-items" id="wishlistItems"></div>
+                <div class="empty-wishlist" id="emptyWishlist" style="display: none;">
+                    <p data-en="Your wishlist is empty" data-ar="قائمة المفضلة فارغة">Your wishlist is empty</p>
+                    <button class="btn btn-secondary" onclick="closeModal('wishlistModal')" data-en="Continue Shopping" data-ar="متابعة التسوق">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

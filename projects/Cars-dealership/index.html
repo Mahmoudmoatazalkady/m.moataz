@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarRent - Find Your Perfect Car</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="shortcut icon" href="hatchback_796312.png" type="image/x-icon">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <i data-lucide="car" class="logo-icon"></i>
+          <h1>CarRent</h1>
+        </div>
+        <button id="newSearchBtn" class="button button-primary hidden">
+          New Search
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Search Form -->
+      <div id="searchForm" class="search-form">
+        <h2>Find Your Perfect Car</h2>
+        <form id="carSearchForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="carModel">Car Model</label>
+              <select id="carModel" required>
+                <option value="">Select Model</option>
+                <option value="SUV">SUV</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Sports">Sports</option>
+                <option value="Luxury">Luxury</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="carName">Car Name (Optional)</label>
+              <input 
+                type="text" 
+                id="carName" 
+                placeholder="e.g., BMW X5"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="seats">Number of Seats</label>
+            <select id="seats" required>
+              <option value="2">2 Seats</option>
+              <option value="4">4 Seats</option>
+              <option value="5">5 Seats</option>
+              <option value="7">7 Seats</option>
+              <option value="8">8 Seats</option>
+            </select>
+          </div>
+
+          <button type="submit" class="button button-primary">
+            <i data-lucide="search"></i>
+            Search Cars
+          </button>
+        </form>
+      </div>
+
+      <!-- Car List -->
+      <div id="carList" class="car-list hidden"></div>
+
+      <!-- Rental Modal -->
+      <div id="rentalModal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-button">
+            <i data-lucide="x"></i>
+          </button>
+          <h2>Rent <span class="car-name"></span></h2>
+          <form id="rentalForm">
+            <div class="form-group">
+              <label for="pickupDate">Pickup Date</label>
+              <div class="input-icon">
+                <i data-lucide="calendar"></i>
+                <input type="date" id="pickupDate" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="returnDate">Return Date</label>
+              <div class="input-icon">
+                <i data-lucide="calendar"></i>
+                <input type="date" id="returnDate" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="needsDriver" data-price="50">
+                <span>Need a driver? ($50/day)</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label>Payment Method</label>
+              <div class="payment-options">
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="cash" checked>
+                  <span>Cash</span>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="credit">
+                  <span>Credit Card</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="total-amount">
+              <span>Total Amount:</span>
+              <span class="amount">$0</span>
+            </div>
+
+            <button class="button button-primary" id="purchase-button" onclick="window.location.href='purchase.html';">
+                Confirm Purchase
+              </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Purchase Modal -->
+      <div id="purchaseModal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-button">
+            <i data-lucide="x"></i>
+          </button>
+          <h2>Purchase <span class="car-name"></span></h2>
+          <form id="purchaseForm">
+            <div class="form-group">
+              <label for="purchasePickupDate">Pickup Date</label>
+              <div class="input-icon">
+                <i data-lucide="calendar"></i>
+                <input type="date" id="purchasePickupDate" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Payment Method</label>
+              <div class="payment-options">
+                <label class="payment-option">
+                  <input type="radio" name="purchasePayment" value="cash" checked>
+                  <span>Cash</span>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="purchasePayment" value="credit">
+                  <span>Credit Card</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="total-amount">
+              <span>Purchase Price:</span>
+              <span class="amount">$0</span>
+            </div>
+
+            <button class="button button-primary" id="purchase-button" onclick="window.location.href='purchase.html';">
+              Confirm Purchase
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

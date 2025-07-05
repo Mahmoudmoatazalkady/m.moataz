@@ -1,0 +1,435 @@
+/* Base Variables */
+:root {
+    --header-height: 150px; /* Increased height */
+    --primary: #1a1a1a;
+    --neon-blue: #00f7ff;
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff00;
+    --crt-bg: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFElEQVR4nGNgYGBkYHCQYKhgqGA4Ychg+MCQwZDBkMGQwZDBkMGQwZDBkAEAwFoEHgABEwAAAABJRU5ErkJggg==');
+}
+
+/* Global Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: var(--primary);
+    color: var(--neon-green);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-top: var(--header-height);
+    background-image: var(--crt-bg);
+}
+
+/* Fixed Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid var(--neon-blue);
+    padding: 30px 40px; /* Increased padding */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Left/Right alignment */
+    align-items: center; /* Vertical centering */
+}
+
+header h1 {
+    font-size: 40px; /* Larger logo */
+    margin: 0;
+    padding: 0 20px 15px; /* Space below text */
+}
+
+.nav-container {
+    display: flex;
+    align-items: center; /* Vertical alignment */
+    gap: 40px; /* Increased spacing */
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--neon-green);
+    text-decoration: none;
+    font-size: 24px; /* Larger text */
+    position: relative;
+    padding: 15px 30px; /* Increased padding */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Space between text and underline */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--neon-pink);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.intro {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--neon-blue);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 0 20px var(--neon-pink);
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.intro h2 {
+    color: var(--neon-blue);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn, .play-btn {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+    color: black;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px var(--neon-pink);
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn:hover, .play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.glitch {
+    position: relative;
+    color: var(--neon-pink);
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+    color: var(--neon-blue);
+    animation: glitch 2s infinite;
+    animation-delay: 0.1s;
+}
+
+.glitch::after {
+    color: var(--neon-green);
+    animation: glitch 2s infinite;
+    animation-delay: 0.2s;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid var(--neon-blue);
+    padding: 10px;
+    text-align: center;
+    z-index: 999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --header-height: 180px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+}
+
+/* Game Cards */
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+.game-card {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border: 3px solid var(--neon-blue);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.game-card:hover {
+    transform: translateY(-10px) rotate(-2deg);
+    box-shadow: 0 0 30px var(--neon-green);
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--neon-blue),
+        var(--neon-blue) 2px,
+        transparent 2px,
+        transparent 5px
+    );
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.game-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid var(--neon-green);
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.game-card:hover img {
+    transform: scale(1.05) rotate(3deg);
+}
+
+.game-card h3 {
+    color: var(--neon-pink);
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.game-card h3.glitch {
+    position: relative;
+}
+
+.game-card h3.glitch::before,
+.game-card h3.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    clip: rect(0, 0, 0, 0);
+}
+
+.game-card h3.glitch::before {
+    color: var(--neon-blue);
+    animation: glitch 1s infinite;
+    animation-delay: 0.1s;
+}
+
+.game-card h3.glitch::after {
+    color: var(--neon-green);
+    animation: glitch 1s infinite;
+    animation-delay: 0.2s;
+}
+.game-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--neon-green);
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    font-size: 14px;
+  }
+  
+  .game-card:hover .game-description {
+    transform: translateY(0);
+  }
+  .score-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--neon-pink);
+  }
+  /* CRT Screen Effect */
+.game-card {
+    /* Add this to existing .game-card styles */
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .game-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, 
+      rgba(255,255,255,0.1) 10%, 
+      rgba(0,0,0,0.5) 100%
+    );
+    pointer-events: none;
+  }
+  
+  /* Joystick Container */
+  .joystick-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid var(--neon-blue);
+    border-radius: 20px;
+    padding: 20px;
+    display: none; /* Show only on mobile */
+    box-shadow: 0 0 20px var(--neon-pink);
+  }
+  
+  .joystick {
+    width: 100%;
+    height: 100%;
+    background: var(--neon-green);
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .joystick-handle {
+    width: 50px;
+    height: 50px;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    transition: transform 0.1s;
+  }
+  
+  /* Show joystick on mobile */
+  @media (max-width: 768px) {
+    .joystick-container {
+      display: block;
+    }
+  }
+.play-btn {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+    color: black;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px var(--neon-pink);
+    text-decoration: none;
+    display: block;
+    margin: 10px auto 20px; /* Adjusted margin */
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.game-card .play-btn {
+    position: relative;
+    z-index: 1;
+}
+
+.game-card .game-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--neon-green);
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    font-size: 14px;
+    z-index: 0;
+}
+
+.game-card:hover .game-description {
+    transform: translateY(0);
+}
